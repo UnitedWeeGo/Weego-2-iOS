@@ -54,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     // Dynamic Link Handlers -----------------------------------------
     // https://e398h.app.goo.gl/
-    // unitedwego.Weego-2://stuffhere
+    // unitedwego.Weego-2
     // https://e398h.app.goo.gl/apple-app-site-association
     // {"applinks":{"apps":[],"details":[{"appID":"PQEPQNBEWP.unitedwego.Weego-2","paths":["/*"]}]}}
     

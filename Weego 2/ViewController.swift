@@ -62,7 +62,7 @@ class ViewController: UIViewController, FUIAuthDelegate {
             return
         }
         
-        showLogout()
+        showLoggedInState()
     }
 
     override func didReceiveMemoryWarning() {
@@ -70,7 +70,8 @@ class ViewController: UIViewController, FUIAuthDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func showLogout() {
+    func showLoggedInState() {
+        
         let logout = UIButton(type: .system)
         logout.setTitle("Logout", for: .normal)
         logout.addTarget(self, action: #selector(doLogout), for: .touchDown)
@@ -81,6 +82,17 @@ class ViewController: UIViewController, FUIAuthDelegate {
         logout.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 16).isActive = true
         logout.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
         logout.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
+        
+        let invite = UIButton(type: .system)
+        invite.setTitle("Invite", for: .normal)
+        invite.addTarget(self, action: #selector(doInvite), for: .touchDown)
+        self.view.addSubview(invite)
+        
+        invite.translatesAutoresizingMaskIntoConstraints = false
+        invite.topAnchor.constraint(equalTo: logout.bottomAnchor, constant: 16).isActive = true
+        invite.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
+        invite.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
+        
     }
     
     func authPickerViewController(forAuthUI authUI: FUIAuth) -> FUIAuthPickerViewController {
@@ -112,6 +124,56 @@ class ViewController: UIViewController, FUIAuthDelegate {
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
+    }
+    
+    func doInvite() {
+        print("doInvite")
+        
+        let user = Auth.auth().currentUser
+        guard let displayName = user?.displayName else {
+            fatalError("displayName empty")
+        }
+        
+        guard let escapedDisplayName = displayName.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
+            fatalError("displayName failed to escape")
+        }
+        
+        let dynamicLinkDomain = "e398h.app.goo.gl"
+        let deepLinkString = "https://weego.live/invite?displayName=\(escapedDisplayName)&eventId=someEventId"
+        
+        
+        guard let deepLink = URL(string: deepLinkString) else {
+            fatalError("deepLink failed to construct")
+        }
+        
+        let components = DynamicLinkComponents(link: deepLink, domain: dynamicLinkDomain)
+
+        let iOSParameters = DynamicLinkIOSParameters(bundleID: "unitedwego.Weego-2")
+        iOSParameters.minimumAppVersion = "2.0.0"
+        iOSParameters.appStoreID = "1243780258"
+        
+        components.iOSParameters = iOSParameters
+        
+        print("long url generated: \(String(describing: components.url))")
+        
+        
+        
+//        FirebaseOptions.default().deepLinkURLScheme ????
+        
+        let options = DynamicLinkComponentsOptions()
+        options.pathLength = .short
+        components.options = options
+        
+        components.shorten { (shortURL, warnings, error) in
+            // Handle shortURL.
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            print(shortURL?.absoluteString ?? "")
+            // send over SMS dude!
+        }
+        
     }
     
     func updateDisplayName(displayName: String) {
