@@ -31,19 +31,19 @@ class ViewController: UIViewController, FUIAuthDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        _ = Auth.auth().addStateDidChangeListener { (auth, user) in
+        _ = Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
             
             guard let currentUser = auth.currentUser else {
                 
                 print("currentUser nil, showLogin()")
                 
-                self.showLogin()
+                self?.showLogin()
                 return
             }
             
             
             // Shows how we would update a users name
-            self.updateDisplayName(displayName: "Nick \(arc4random_uniform(150))")
+            self?.updateDisplayName(displayName: "Nick \(arc4random_uniform(150))")
             
             
             print("currentUser.uid \(String(describing: currentUser.uid))")
@@ -71,13 +71,16 @@ class ViewController: UIViewController, FUIAuthDelegate {
     }
     
     func showLogout() {
-        let logout = UIButton(frame: CGRect(x: 8, y: 24, width: 0, height: 0))
+        let logout = UIButton(type: .system)
         logout.setTitle("Logout", for: .normal)
-        logout.backgroundColor = .black
-        logout.contentEdgeInsets = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
         logout.addTarget(self, action: #selector(doLogout), for: .touchDown)
         self.view.addSubview(logout)
-        logout.sizeToFit()
+        
+        let margins = view.layoutMarginsGuide
+        logout.translatesAutoresizingMaskIntoConstraints = false
+        logout.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 16).isActive = true
+        logout.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
+        logout.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
     }
     
     func authPickerViewController(forAuthUI authUI: FUIAuth) -> FUIAuthPickerViewController {
@@ -90,9 +93,7 @@ class ViewController: UIViewController, FUIAuthDelegate {
         authUI?.isSignInWithEmailHidden = true
         authUI?.delegate = self
         
-        let providers: [FUIAuthProvider] = [
-            FUIPhoneAuth(authUI: FUIAuth.defaultAuthUI()!),
-            ]
+        let providers: [FUIAuthProvider] = [FUIPhoneAuth(authUI: FUIAuth.defaultAuthUI()!)]
         authUI?.providers = providers
         
         let authViewController = authUI!.authViewController()
@@ -116,12 +117,12 @@ class ViewController: UIViewController, FUIAuthDelegate {
     func updateDisplayName(displayName: String) {
         let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
         changeRequest?.displayName = displayName
-        changeRequest?.commitChanges() { error in
+        changeRequest?.commitChanges() { [weak self] error in
             
             if let error = error {
                 print("changeRequest?.commitChanges error \(error.localizedDescription)")
                 print("logging out, account issue.")
-                self.doLogout()
+                self?.doLogout()
                 return
             } else if let name = Auth.auth().currentUser?.displayName {
                 print("Updated user name: \(name)")

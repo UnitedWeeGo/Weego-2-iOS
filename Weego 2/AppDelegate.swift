@@ -23,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         Fabric.with([Crashlytics.self])
+        
+        FirebaseOptions.defaultOptions()?.deepLinkURLScheme = "unitedwego.Weego-2"
         FirebaseApp.configure()
         
         // Testing simulation of crash
@@ -49,6 +51,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         return true
     }
     
+    
+    // Dynamic Link Handlers -----------------------------------------
+    // https://e398h.app.goo.gl/
+    // unitedwego.Weego-2://stuffhere
+    // https://e398h.app.goo.gl/apple-app-site-association
+    // {"applinks":{"apps":[],"details":[{"appID":"PQEPQNBEWP.unitedwego.Weego-2","paths":["/*"]}]}}
+    
+    
     func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any])
         -> Bool {
             return self.application(application, open: url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: "")
@@ -56,10 +66,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         
-        // https://e398h.app.goo.gl/
+        print("Handling a link with the open url method")
         
+        let dynamicLink = DynamicLinks.dynamicLinks()?.dynamicLink(fromCustomSchemeURL: url)
+        
+        guard let dnl = dynamicLink, let _ = dnl.url else {
+            print("dynamicLinks error, url: \(String(describing: dynamicLink?.url))")
+            return false
+        }
+        self.handleDynamicLink(dynamiclink: dnl)
+
         return true
     }
+    
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
+        guard let dynamicLinks = DynamicLinks.dynamicLinks() else {
+            return false
+        }
+        let handled = dynamicLinks.handleUniversalLink(userActivity.webpageURL!) { [weak self] (dynamiclink, error) in
+            guard let dnl = dynamiclink, let _ = dnl.url else {
+                print("dynamicLinks error, url: \(String(describing: dynamiclink?.url))")
+                return
+            }
+            self?.handleDynamicLink(dynamiclink: dnl)
+        }
+        return handled
+    }
+    
+    func handleDynamicLink(dynamiclink: DynamicLink) {
+        print("handleDynamicLink url: \(String(describing: dynamiclink.url))")
+    }
+    
+    // End Dynamic Link Handlers -----------------------------------------
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
