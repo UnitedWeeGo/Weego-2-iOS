@@ -22,6 +22,25 @@ platform :ios do
     
   end
 
+  desc "Add a device and gen new prov profile"
+  lane :add_device do
+      device_name = prompt(text: "Enter the device name: ")
+      device_udid = prompt(text: "Enter the device UDID: ")
+      device_hash = {}
+      device_hash[device_name] = device_udid
+      register_devices(
+        devices: device_hash
+      )
+    refresh_profiles
+  end
+
+  # A helper lane for refreshing provisioning profiles.
+  lane :refresh_profiles do
+    match(
+      force_for_new_devices: true
+   )
+  end
+
   desc "Runs all the tests"
   lane :test do
     scan

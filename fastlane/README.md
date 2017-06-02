@@ -30,6 +30,16 @@ xcode-select --install
 
 # Available Actions
 ## iOS
+### ios add_device
+```
+fastlane ios add_device
+```
+Add a device and gen new prov profile
+### ios refresh_profiles
+```
+fastlane ios refresh_profiles
+```
+
 ### ios test
 ```
 fastlane ios test
