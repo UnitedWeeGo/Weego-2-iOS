@@ -20,7 +20,11 @@ class ViewController: UIViewController, FUIAuthDelegate {
      @param error The error that occurred during sign in, if any.
      */
     func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {
-        print("")
+        
+        if let error = error {
+            print("login error: \(error.localizedDescription)")
+        }
+        
     }
 
 
@@ -28,11 +32,25 @@ class ViewController: UIViewController, FUIAuthDelegate {
         super.viewDidLoad()
         
         _ = Auth.auth().addStateDidChangeListener { (auth, user) in
-            print("user.uid \(String(describing: user?.uid))")
-            print("user.displayName \(String(describing: user?.displayName))")
-            print("user.phoneNumber \(String(describing: user?.phoneNumber))")
-            print("user.email \(String(describing: user?.email))")
-            print("user.photoURL \(String(describing: user?.photoURL))")
+            
+            guard let currentUser = auth.currentUser else {
+                
+                print("currentUser nil, showLogin()")
+                
+                self.showLogin()
+                return
+            }
+            
+            
+            // Shows how we would update a users name
+            self.updateDisplayName(displayName: "Nick \(arc4random_uniform(150))")
+            
+            
+            print("currentUser.uid \(String(describing: currentUser.uid))")
+            print("currentUser.displayName \(String(describing: currentUser.displayName))")
+            print("currentUser.phoneNumber \(String(describing: currentUser.phoneNumber))")
+            print("currentUser.email \(String(describing: currentUser.email))")
+            print("currentUser.photoURL \(String(describing: currentUser.photoURL))")
         }
 
     }
@@ -41,18 +59,10 @@ class ViewController: UIViewController, FUIAuthDelegate {
         super.viewDidAppear(animated)
         
         guard let _ = Auth.auth().currentUser else {
-            showLogin()
             return
         }
         
-        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-        changeRequest?.displayName = "Nick 1"
-        changeRequest?.commitChanges() { error in
-            print("changeRequest?.commitChanges error? \(error?.localizedDescription ?? "no")")
-            if let user = Auth.auth().currentUser {
-                print("Updated user name: \(String(describing: user.displayName))")
-            }
-        }
+        showLogout()
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,25 +70,64 @@ class ViewController: UIViewController, FUIAuthDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    func showLogout() {
+        let logout = UIButton(frame: CGRect(x: 8, y: 24, width: 0, height: 0))
+        logout.setTitle("Logout", for: .normal)
+        logout.backgroundColor = .black
+        logout.contentEdgeInsets = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
+        logout.addTarget(self, action: #selector(doLogout), for: .touchDown)
+        self.view.addSubview(logout)
+        logout.sizeToFit()
+    }
+    
+    func authPickerViewController(forAuthUI authUI: FUIAuth) -> FUIAuthPickerViewController {
+        return AuthViewController(nibName: nil, bundle: nil, authUI: authUI)
+    }
     
     func showLogin() {
         let authUI = FUIAuth.defaultAuthUI()
-        // You need to adopt a FUIAuthDelegate protocol to receive callback
+        
+        authUI?.isSignInWithEmailHidden = true
         authUI?.delegate = self
         
-        
         let providers: [FUIAuthProvider] = [
-            FUIPhoneAuth(authUI:FUIAuth.defaultAuthUI()!),
+            FUIPhoneAuth(authUI: FUIAuth.defaultAuthUI()!),
             ]
         authUI?.providers = providers
         
         let authViewController = authUI!.authViewController()
+        authViewController.isNavigationBarHidden = true
         
         self.present(authViewController, animated: true, completion: {
             print("authViewController present completion")
         })
     }
 
-
+    func doLogout() {
+        print("doLogout")
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+    }
+    
+    func updateDisplayName(displayName: String) {
+        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+        changeRequest?.displayName = displayName
+        changeRequest?.commitChanges() { error in
+            
+            if let error = error {
+                print("changeRequest?.commitChanges error \(error.localizedDescription)")
+                print("logging out, account issue.")
+                self.doLogout()
+                return
+            } else if let name = Auth.auth().currentUser?.displayName {
+                print("Updated user name: \(name)")
+            }
+        }
+    }
+    
 }
 
