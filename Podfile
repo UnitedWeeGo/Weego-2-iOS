@@ -5,13 +5,16 @@ target 'Weego 2' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
+  pod 'Fabric'
+  pod 'Crashlytics'
+
   # Pods for Weego
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
+  pod 'Firebase/DynamicLinks'
 
-  # pod 'Firebase/Database'
   # pod 'Firebase/Invites'
-  # pod 'Firebase/DynamicLinks'
+  # pod 'Firebase/Database'
 
   pod 'Firebase/Auth'
 

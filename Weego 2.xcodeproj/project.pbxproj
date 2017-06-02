@@ -188,6 +188,7 @@
 				76DBBF141EE0F7D200186FBB /* Resources */,
 				FC6A440EC92BD830FE5D2C92 /* [CP] Embed Pods Frameworks */,
 				9D18BB6F15C7BC70F57206A0 /* [CP] Copy Pods Resources */,
+				764265201EE1B3250075083D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -388,6 +389,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Weego 2UITests/Pods-Weego 2UITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		764265201EE1B3250075083D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" cf61a6f5e0b3d0cdf796bf27c27d63d4ba1248d8 0ca9b215c4f1dcc019f640a56bc74c1c0dddcbbd9b943c9041b4033ac3ce4310";
+		};
 		79FC50029ED1F36944E53C74 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -551,7 +565,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;

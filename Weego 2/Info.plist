@@ -15,9 +15,23 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>2.0.0</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2017.06.02.1045</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>cf61a6f5e0b3d0cdf796bf27c27d63d4ba1248d8</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Crashlytics</string>
+			</dict>
+		</array>
+	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIBackgroundModes</key>

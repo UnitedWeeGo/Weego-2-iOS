@@ -46,22 +46,38 @@ platform :ios do
     scan
   end
 
-  desc "Submit a new Beta Build to Apple TestFlight"
+  desc "Submit a new Beta Build to Crashlytics"
   desc "This will also make sure the profile is up to date"
   lane :beta do
-    # match(type: "appstore") # more information: https://codesigning.guide
-    gym(scheme: "Weego 2") # Build your app - more options available
-    pilot
 
-    # sh "your_script.sh"
-    # You can also use other beta testing services here (run `fastlane actions`)
+    build_number = Time.new.strftime("%Y.%m.%d.%H%M")
+    increment_build_number(build_number: build_number)
+
+    match
+    gym
+    
+    emails = ['nick.velloff@gmail.com']
+    groups = ['alpha']
+
+    # upload to Beta by Crashlytics
+    crashlytics(
+      api_token: "cf61a6f5e0b3d0cdf796bf27c27d63d4ba1248d8",
+      build_secret: "0ca9b215c4f1dcc019f640a56bc74c1c0dddcbbd9b943c9041b4033ac3ce4310",
+      emails: emails,
+      groups: groups,
+      notifications: true
+    )
+
+    upload_symbols_to_crashlytics(api_token: "cf61a6f5e0b3d0cdf796bf27c27d63d4ba1248d8")
+    clean_build_artifacts
+
   end
 
   desc "Deploy a new version to the App Store"
   lane :release do
     # match(type: "appstore")
     # snapshot
-    gym(scheme: "Weego 2") # Build your app - more options available
+    gym
     deliver(force: true)
     # frameit
   end
