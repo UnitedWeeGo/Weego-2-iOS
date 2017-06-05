@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		0C2578ED5C74DA1FF26E5022 /* Pods_Weego_2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F4CD73F22A5D90EC218FE37 /* Pods_Weego_2.framework */; };
 		7642651F1EE175630075083D /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7642651E1EE175630075083D /* AuthViewController.swift */; };
+		767147C41EE4971A008B92F2 /* Authenticated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767147C31EE4971A008B92F2 /* Authenticated.swift */; };
+		767147CB1EE4EF90008B92F2 /* WeegoEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767147CA1EE4EF90008B92F2 /* WeegoEvent.swift */; };
+		767147CE1EE50EDD008B92F2 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767147CD1EE50EDD008B92F2 /* Date.swift */; };
 		76DBBF1A1EE0F7D200186FBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DBBF191EE0F7D200186FBB /* AppDelegate.swift */; };
 		76DBBF1C1EE0F7D200186FBB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DBBF1B1EE0F7D200186FBB /* ViewController.swift */; };
 		76DBBF1F1EE0F7D200186FBB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76DBBF1D1EE0F7D200186FBB /* Main.storyboard */; };
@@ -48,6 +51,9 @@
 		4323D537537D00CB9FBE4B9F /* Pods_Weego_2Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Weego_2Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C32F5B655C464562A8352B5 /* Pods-Weego 2UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weego 2UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Weego 2UITests/Pods-Weego 2UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7642651E1EE175630075083D /* AuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		767147C31EE4971A008B92F2 /* Authenticated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authenticated.swift; sourceTree = "<group>"; };
+		767147CA1EE4EF90008B92F2 /* WeegoEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeegoEvent.swift; sourceTree = "<group>"; };
+		767147CD1EE50EDD008B92F2 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		76DBBF161EE0F7D200186FBB /* Weego 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weego 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		76DBBF191EE0F7D200186FBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76DBBF1B1EE0F7D200186FBB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +115,22 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		767147C91EE4EF5F008B92F2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				767147CA1EE4EF90008B92F2 /* WeegoEvent.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		767147CC1EE50ECE008B92F2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				767147CD1EE50EDD008B92F2 /* Date.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		76DBBF0D1EE0F7D200186FBB = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +156,8 @@
 		76DBBF181EE0F7D200186FBB /* Weego 2 */ = {
 			isa = PBXGroup;
 			children = (
+				767147CC1EE50ECE008B92F2 /* Extensions */,
+				767147C91EE4EF5F008B92F2 /* Models */,
 				76DBBF4B1EE0FADE00186FBB /* Weego 2.entitlements */,
 				76DBBF471EE0F96300186FBB /* GoogleService-Info.plist */,
 				76DBBF191EE0F7D200186FBB /* AppDelegate.swift */,
@@ -143,6 +167,7 @@
 				76DBBF221EE0F7D200186FBB /* LaunchScreen.storyboard */,
 				76DBBF251EE0F7D200186FBB /* Info.plist */,
 				7642651E1EE175630075083D /* AuthViewController.swift */,
+				767147C31EE4971A008B92F2 /* Authenticated.swift */,
 			);
 			path = "Weego 2";
 			sourceTree = "<group>";
@@ -488,6 +513,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				76DBBF1C1EE0F7D200186FBB /* ViewController.swift in Sources */,
+				767147CE1EE50EDD008B92F2 /* Date.swift in Sources */,
+				767147C41EE4971A008B92F2 /* Authenticated.swift in Sources */,
+				767147CB1EE4EF90008B92F2 /* WeegoEvent.swift in Sources */,
 				7642651F1EE175630075083D /* AuthViewController.swift in Sources */,
 				76DBBF1A1EE0F7D200186FBB /* AppDelegate.swift in Sources */,
 			);

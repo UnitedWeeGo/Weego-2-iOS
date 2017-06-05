@@ -12,17 +12,17 @@ target 'Weego 2' do
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
   pod 'Firebase/DynamicLinks'
+  pod 'Firebase/Database'
+  pod 'Firebase/Auth'
 
   # pod 'Firebase/Invites'
-  # pod 'Firebase/Database'
-
-  pod 'Firebase/Auth'
+  # pod 'Firebase/Storage'
+ 
 
   # Only pull in Phone Auth login features
   # https://github.com/firebase/FirebaseUI-iOS
+  # Temp for testing
   pod 'FirebaseUI/Phone', '~> 4.0'
-
-  # pod 'Firebase/Storage'
 
   target 'Weego 2Tests' do
     inherit! :search_paths
