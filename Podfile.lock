@@ -64,7 +64,34 @@ PODS:
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMSessionFetcher/Core (1.1.10)
+  - PINCache (3.0.1-beta.4):
+    - PINCache/Arc-exception-safe (= 3.0.1-beta.4)
+    - PINCache/Core (= 3.0.1-beta.4)
+  - PINCache/Arc-exception-safe (3.0.1-beta.4):
+    - PINCache/Core
+  - PINCache/Core (3.0.1-beta.4):
+    - PINOperation (= 1.0.3)
+  - PINOperation (1.0.3)
+  - PINRemoteImage/Core (3.0.0-beta.9):
+    - PINOperation
+  - PINRemoteImage/iOS (3.0.0-beta.9):
+    - PINRemoteImage/Core
+  - PINRemoteImage/PINCache (3.0.0-beta.9):
+    - PINCache (= 3.0.1-beta.4)
+    - PINRemoteImage/Core
   - Protobuf (3.3.0)
+  - ReactiveReSwift (3.0.6)
+  - ReSwift (4.0.0)
+  - RxCocoa (3.5.0):
+    - RxSwift (~> 3.4)
+  - RxSwift (3.4.1)
+  - Texture (2.3.2):
+    - Texture/PINRemoteImage (= 2.3.2)
+  - Texture/Core (2.3.2)
+  - Texture/PINRemoteImage (2.3.2):
+    - PINRemoteImage/iOS (= 3.0.0-beta.9)
+    - PINRemoteImage/PINCache
+    - Texture/Core
 
 DEPENDENCIES:
   - Crashlytics
@@ -77,6 +104,20 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/DynamicLinks
   - Firebase/Messaging
+  - ReactiveReSwift (from `https://github.com/ReSwift/ReactiveReSwift.git`)
+  - ReSwift
+  - RxCocoa
+  - RxSwift (~> 3.4.0)
+  - Texture
+
+EXTERNAL SOURCES:
+  ReactiveReSwift:
+    :git: https://github.com/ReSwift/ReactiveReSwift.git
+
+CHECKOUT OPTIONS:
+  ReactiveReSwift:
+    :commit: 64345f1683f21079205a46f30969466d1b897d8c
+    :git: https://github.com/ReSwift/ReactiveReSwift.git
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
@@ -95,8 +136,16 @@ SPEC CHECKSUMS:
   FirebaseMessaging: 227406c05b0dc9290702d2e9f18ab5528f0c2cf2
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 30d874b96d0d76028f61fbd122801e3f030d47db
+  PINCache: a89c8f609232afac77128557bd12c861844423d7
+  PINOperation: ac23db44796d4a564ecf9b5ea7163510f579b71d
+  PINRemoteImage: e4e02e15a6f96cedbcef2abf1c9c1228dc9897d7
   Protobuf: d582fecf68201eac3d79ed61369ef45734394b9c
+  ReactiveReSwift: 6a2db8e436c7ebdebad86795832e68784e0e01f3
+  ReSwift: f058ef13b46ae5f463f10605ccbbb7fb04424d8d
+  RxCocoa: a0a09f45d0e5b48ecb6a4a7b4b4c89c88d3f633f
+  RxSwift: 656f8fbeca5bc372121a72d9ebdd3cd3bc0ffade
+  Texture: 18664254419f35de27af76399b3b265cbad5740a
 
-PODFILE CHECKSUM: 8e13f51ada4c813f36164103e308f721fdda97af
+PODFILE CHECKSUM: '08e1043252a297a2c40dff6d019708d8a7f576f2'
 
 COCOAPODS: 1.2.0

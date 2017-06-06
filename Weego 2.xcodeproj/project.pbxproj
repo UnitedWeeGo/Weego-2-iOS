@@ -13,7 +13,6 @@
 		767147CE1EE50EDD008B92F2 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767147CD1EE50EDD008B92F2 /* Date.swift */; };
 		76DBBF1A1EE0F7D200186FBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DBBF191EE0F7D200186FBB /* AppDelegate.swift */; };
 		76DBBF1C1EE0F7D200186FBB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DBBF1B1EE0F7D200186FBB /* ViewController.swift */; };
-		76DBBF1F1EE0F7D200186FBB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76DBBF1D1EE0F7D200186FBB /* Main.storyboard */; };
 		76DBBF211EE0F7D200186FBB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76DBBF201EE0F7D200186FBB /* Assets.xcassets */; };
 		76DBBF241EE0F7D200186FBB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76DBBF221EE0F7D200186FBB /* LaunchScreen.storyboard */; };
 		76DBBF2F1EE0F7D200186FBB /* Weego_2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DBBF2E1EE0F7D200186FBB /* Weego_2Tests.swift */; };
@@ -21,6 +20,12 @@
 		76DBBF481EE0F96300186FBB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76DBBF471EE0F96300186FBB /* GoogleService-Info.plist */; };
 		76DBBF491EE0F96300186FBB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76DBBF471EE0F96300186FBB /* GoogleService-Info.plist */; };
 		76DBBF4A1EE0F96300186FBB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76DBBF471EE0F96300186FBB /* GoogleService-Info.plist */; };
+		8BC611C91EE6A9E6005C5E89 /* ReactiveReSwiftBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC611C81EE6A9E6005C5E89 /* ReactiveReSwiftBridge.swift */; };
+		8BC611CC1EE6AA56005C5E89 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC611CB1EE6AA56005C5E89 /* AppState.swift */; };
+		8BC611CF1EE6AA8C005C5E89 /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC611CE1EE6AA8C005C5E89 /* AppReducer.swift */; };
+		8BC611D11EE6AB89005C5E89 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC611D01EE6AB89005C5E89 /* Storage.swift */; };
+		8BC611D31EE6B30B005C5E89 /* UserState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC611D21EE6B30B005C5E89 /* UserState.swift */; };
+		8BC611D51EE6B3CB005C5E89 /* UserReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC611D41EE6B3CB005C5E89 /* UserReducer.swift */; };
 		A3FB078D2CB6C52C1E905EAC /* Pods_Weego_2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4323D537537D00CB9FBE4B9F /* Pods_Weego_2Tests.framework */; };
 		DA2601152757F23F8F83E603 /* Pods_Weego_2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C324519866555FD41CAF830 /* Pods_Weego_2UITests.framework */; };
 /* End PBXBuildFile section */
@@ -55,7 +60,6 @@
 		76DBBF161EE0F7D200186FBB /* Weego 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weego 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		76DBBF191EE0F7D200186FBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76DBBF1B1EE0F7D200186FBB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		76DBBF1E1EE0F7D200186FBB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		76DBBF201EE0F7D200186FBB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		76DBBF231EE0F7D200186FBB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		76DBBF251EE0F7D200186FBB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -67,6 +71,12 @@
 		76DBBF3B1EE0F7D200186FBB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76DBBF471EE0F96300186FBB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		76DBBF4B1EE0FADE00186FBB /* Weego 2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Weego 2.entitlements"; sourceTree = "<group>"; };
+		8BC611C81EE6A9E6005C5E89 /* ReactiveReSwiftBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveReSwiftBridge.swift; sourceTree = "<group>"; };
+		8BC611CB1EE6AA56005C5E89 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		8BC611CE1EE6AA8C005C5E89 /* AppReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
+		8BC611D01EE6AB89005C5E89 /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		8BC611D21EE6B30B005C5E89 /* UserState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserState.swift; sourceTree = "<group>"; };
+		8BC611D41EE6B3CB005C5E89 /* UserReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserReducer.swift; sourceTree = "<group>"; };
 		A8C528DC7E328CE2257A13E7 /* Pods-Weego 2UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weego 2UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Weego 2UITests/Pods-Weego 2UITests.release.xcconfig"; sourceTree = "<group>"; };
 		DC64EF6197C9E338067D1BF1 /* Pods-Weego 2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weego 2.release.xcconfig"; path = "Pods/Target Support Files/Pods-Weego 2/Pods-Weego 2.release.xcconfig"; sourceTree = "<group>"; };
 		ED7C2A93375264819F1FAD68 /* Pods-Weego 2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weego 2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Weego 2/Pods-Weego 2.debug.xcconfig"; sourceTree = "<group>"; };
@@ -132,6 +142,7 @@
 		76DBBF0D1EE0F7D200186FBB = {
 			isa = PBXGroup;
 			children = (
+				8BC611C61EE6A9BD005C5E89 /* Shared */,
 				76DBBF181EE0F7D200186FBB /* Weego 2 */,
 				76DBBF2D1EE0F7D200186FBB /* Weego 2Tests */,
 				76DBBF381EE0F7D200186FBB /* Weego 2UITests */,
@@ -160,7 +171,6 @@
 				76DBBF471EE0F96300186FBB /* GoogleService-Info.plist */,
 				76DBBF191EE0F7D200186FBB /* AppDelegate.swift */,
 				76DBBF1B1EE0F7D200186FBB /* ViewController.swift */,
-				76DBBF1D1EE0F7D200186FBB /* Main.storyboard */,
 				76DBBF201EE0F7D200186FBB /* Assets.xcassets */,
 				76DBBF221EE0F7D200186FBB /* LaunchScreen.storyboard */,
 				76DBBF251EE0F7D200186FBB /* Info.plist */,
@@ -185,6 +195,43 @@
 				76DBBF3B1EE0F7D200186FBB /* Info.plist */,
 			);
 			path = "Weego 2UITests";
+			sourceTree = "<group>";
+		};
+		8BC611C61EE6A9BD005C5E89 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				8BC611C71EE6A9CD005C5E89 /* Storage */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		8BC611C71EE6A9CD005C5E89 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				8BC611CD1EE6AA82005C5E89 /* Reducer */,
+				8BC611CA1EE6AA4D005C5E89 /* State */,
+				8BC611C81EE6A9E6005C5E89 /* ReactiveReSwiftBridge.swift */,
+				8BC611D01EE6AB89005C5E89 /* Storage.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		8BC611CA1EE6AA4D005C5E89 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				8BC611CB1EE6AA56005C5E89 /* AppState.swift */,
+				8BC611D21EE6B30B005C5E89 /* UserState.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		8BC611CD1EE6AA82005C5E89 /* Reducer */ = {
+			isa = PBXGroup;
+			children = (
+				8BC611CE1EE6AA8C005C5E89 /* AppReducer.swift */,
+				8BC611D41EE6B3CB005C5E89 /* UserReducer.swift */,
+			);
+			path = Reducer;
 			sourceTree = "<group>";
 		};
 		C9AC9FD8978F6A3DD626B861 /* Frameworks */ = {
@@ -331,7 +378,6 @@
 				76DBBF241EE0F7D200186FBB /* LaunchScreen.storyboard in Resources */,
 				76DBBF481EE0F96300186FBB /* GoogleService-Info.plist in Resources */,
 				76DBBF211EE0F7D200186FBB /* Assets.xcassets in Resources */,
-				76DBBF1F1EE0F7D200186FBB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,10 +555,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BC611D51EE6B3CB005C5E89 /* UserReducer.swift in Sources */,
 				76DBBF1C1EE0F7D200186FBB /* ViewController.swift in Sources */,
 				767147CE1EE50EDD008B92F2 /* Date.swift in Sources */,
+				8BC611CC1EE6AA56005C5E89 /* AppState.swift in Sources */,
+				8BC611C91EE6A9E6005C5E89 /* ReactiveReSwiftBridge.swift in Sources */,
 				767147C41EE4971A008B92F2 /* Authenticated.swift in Sources */,
+				8BC611D11EE6AB89005C5E89 /* Storage.swift in Sources */,
+				8BC611D31EE6B30B005C5E89 /* UserState.swift in Sources */,
 				767147CB1EE4EF90008B92F2 /* WeegoEvent.swift in Sources */,
+				8BC611CF1EE6AA8C005C5E89 /* AppReducer.swift in Sources */,
 				76DBBF1A1EE0F7D200186FBB /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -549,14 +601,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		76DBBF1D1EE0F7D200186FBB /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				76DBBF1E1EE0F7D200186FBB /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		76DBBF221EE0F7D200186FBB /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
