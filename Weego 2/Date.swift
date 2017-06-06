@@ -1,11 +1,3 @@
-//
-//  Date.swift
-//  Weego 2
-//
-//  Created by Nicholas Velloff on 6/4/17.
-//  Copyright © 2017 UnitedWeGo LLC. All rights reserved.
-//
-
 import Foundation
 
 public extension Date {

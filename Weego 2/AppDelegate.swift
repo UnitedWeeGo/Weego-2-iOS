@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  Weego 2
-//
-//  Created by Nicholas Velloff on 6/1/17.
-//  Copyright © 2017 UnitedWeGo LLC. All rights reserved.
-//
-
 import UIKit
 import Firebase
 import NotificationCenter
