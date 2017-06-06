@@ -82,6 +82,7 @@ class ViewController: ASViewController<ASDisplayNode>, FBSDKLoginButtonDelegate 
 
     let loginButton = FBSDKLoginButton()
     loginButton.defaultAudience = .friends
+    loginButton.loginBehavior = .systemAccount
     loginButton.delegate = self
     loginButton.center = self.view.center
     self.view.addSubview(loginButton)
