@@ -14,7 +14,8 @@ struct Storage {
         return action
     }
 
-    let initialState = AppState()
+    let userState = UserState(withIsAuthed: false);
+    let initialState = AppState(withUserState: userState);
 
     storage = Store(
       reducer: appReducer,

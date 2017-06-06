@@ -1,6 +1,7 @@
-import ReactiveReSwift
-
 struct AppState {
-  init() {
+  let userState: UserState
+
+  init(withUserState userState: UserState) {
+    self.userState = userState
   }
 }
