@@ -25,6 +25,9 @@ target 'Weego 2' do
   pod 'RxSwift', '~> 3.4.0'
   pod 'RxCocoa'
 
+  # UI
+  pod 'Texture'
+
   # Facebook Auth
   pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'
