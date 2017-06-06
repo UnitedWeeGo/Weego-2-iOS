@@ -39,23 +39,13 @@ class Authenticated: UIViewController {
         dynamicLinkBtn.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
         dynamicLinkBtn.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
         
-        let getUserPhoneBtn = UIButton(type: .system)
-        getUserPhoneBtn.setTitle("Get Auth Provider User Phone Number", for: .normal)
-        getUserPhoneBtn.addTarget(self, action: #selector(getUserPhoneNumber), for: .touchDown)
-        self.view.addSubview(getUserPhoneBtn)
-        
-        getUserPhoneBtn.translatesAutoresizingMaskIntoConstraints = false
-        getUserPhoneBtn.topAnchor.constraint(equalTo: dynamicLinkBtn.bottomAnchor, constant: 16).isActive = true
-        getUserPhoneBtn.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
-        getUserPhoneBtn.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
-        
         let addEventBtn = UIButton(type: .system)
         addEventBtn.setTitle("Create A Random Event", for: .normal)
         addEventBtn.addTarget(self, action: #selector(createRandomEvent), for: .touchDown)
         self.view.addSubview(addEventBtn)
         
         addEventBtn.translatesAutoresizingMaskIntoConstraints = false
-        addEventBtn.topAnchor.constraint(equalTo: getUserPhoneBtn.bottomAnchor, constant: 16).isActive = true
+        addEventBtn.topAnchor.constraint(equalTo: dynamicLinkBtn.bottomAnchor, constant: 16).isActive = true
         addEventBtn.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
         addEventBtn.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
         
@@ -127,17 +117,6 @@ class Authenticated: UIViewController {
             print("url shortning success: \(String(describing: shortURL?.absoluteString))")
             // send over SMS dude!
         }
-    }
-    
-    // Example: Get users provider specific information, in our case phone number
-    func getUserPhoneNumber() {
-        let userInfoPhone = Auth.auth().currentUser?.providerData.filter({ (userInfo) -> Bool in
-            return userInfo.providerID == "phone"
-        }).first
-        guard let phoneNumber = userInfoPhone?.phoneNumber else {
-            fatalError("Phone number not available in provider data, abort")
-        }
-        print("Users phone number: \(phoneNumber)")
     }
     
     // Example: Add an event record to DB, trigger listening cloud function
