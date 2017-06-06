@@ -77,7 +77,7 @@ class ViewController: ASViewController<ASDisplayNode>, FBSDKLoginButtonDelegate 
 
   func showLoggedInState() {
 
-    let authenticatedVC = Authenticated()
+    let authenticatedVC = Authenticated(withStorage: storage)
     authenticatedVC.modalTransitionStyle = .flipHorizontal
     self.present(authenticatedVC, animated: true) {
       print("Did present Authenticated VC")

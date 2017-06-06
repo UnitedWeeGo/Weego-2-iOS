@@ -20,7 +20,7 @@ import AsyncDisplayKit
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
   var window: UIWindow?
-  private let mainStore = Storage()
+  private var mainStore: Storage?
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
@@ -28,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     FirebaseOptions.defaultOptions()?.deepLinkURLScheme = "unitedwego.Weego-2"
     FirebaseApp.configure()
+
+    mainStore = Storage()
 
     // Testing simulation of crash
     let when = DispatchTime.now() + 5 // change 2 to desired number of seconds
@@ -39,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     // Facebook
     FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
-    let rootViewController = ViewController(withStorage: mainStore)
+    let rootViewController = ViewController(withStorage: mainStore!)
     let navigationController = ASNavigationController(rootViewController: rootViewController)
     navigationController.isNavigationBarHidden = true
 

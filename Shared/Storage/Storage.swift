@@ -1,5 +1,6 @@
 import RxSwift
 import ReactiveReSwift
+import Firebase
 
 struct Storage {
   private let storage: Store<Variable<AppState>>
@@ -14,7 +15,9 @@ struct Storage {
         return action
     }
 
-    let userState = UserState(withIsAuthed: false);
+    let userIsAuthed = (Auth.auth().currentUser != nil) ? true : false
+
+    let userState = UserState(withIsAuthed: userIsAuthed);
     let initialState = AppState(withUserState: userState);
 
     storage = Store(
