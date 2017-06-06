@@ -10,9 +10,10 @@ import UIKit
 import Firebase
 import NotificationCenter
 import UserNotifications
-import FirebasePhoneAuthUI
 import Fabric
 import Crashlytics
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -33,6 +34,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 //            Crashlytics.sharedInstance().crash()
 //            Crashlytics.sharedInstance().throwException()
         }
+        
+        // Facebook
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
         
         return true
     }
@@ -70,13 +75,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         let dynamicLink = DynamicLinks.dynamicLinks()?.dynamicLink(fromCustomSchemeURL: url)
         
-        guard let dnl = dynamicLink, let _ = dnl.url else {
-            print("dynamicLinks error, url: \(String(describing: dynamicLink?.url))")
-            return false
+        if let dnl = dynamicLink, let _ = dnl.url {
+            self.handleDynamicLink(dynamiclink: dnl)
+            return true
         }
-        self.handleDynamicLink(dynamiclink: dnl)
-
-        return true
+        
+        let handled = FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+        return handled
     }
     
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
@@ -120,7 +125,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-    
     
 }
 

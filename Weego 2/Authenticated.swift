@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import FBSDKLoginKit
 
 class Authenticated: UIViewController {
     
@@ -38,23 +39,13 @@ class Authenticated: UIViewController {
         dynamicLinkBtn.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
         dynamicLinkBtn.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
         
-        let updateUserRecordBtn = UIButton(type: .system)
-        updateUserRecordBtn.setTitle("Update User Record Example", for: .normal)
-        updateUserRecordBtn.addTarget(self, action: #selector(updateUserRecordDisplayName), for: .touchDown)
-        self.view.addSubview(updateUserRecordBtn)
-        
-        updateUserRecordBtn.translatesAutoresizingMaskIntoConstraints = false
-        updateUserRecordBtn.topAnchor.constraint(equalTo: dynamicLinkBtn.bottomAnchor, constant: 16).isActive = true
-        updateUserRecordBtn.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
-        updateUserRecordBtn.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
-        
         let getUserPhoneBtn = UIButton(type: .system)
         getUserPhoneBtn.setTitle("Get Auth Provider User Phone Number", for: .normal)
         getUserPhoneBtn.addTarget(self, action: #selector(getUserPhoneNumber), for: .touchDown)
         self.view.addSubview(getUserPhoneBtn)
         
         getUserPhoneBtn.translatesAutoresizingMaskIntoConstraints = false
-        getUserPhoneBtn.topAnchor.constraint(equalTo: updateUserRecordBtn.bottomAnchor, constant: 16).isActive = true
+        getUserPhoneBtn.topAnchor.constraint(equalTo: dynamicLinkBtn.bottomAnchor, constant: 16).isActive = true
         getUserPhoneBtn.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
         getUserPhoneBtn.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
         
@@ -85,6 +76,7 @@ class Authenticated: UIViewController {
         do {
             try firebaseAuth.signOut()
             Database.database().reference().removeAllObservers()
+            FBSDKLoginManager.init().logOut()
             presentingViewController?.dismiss(animated: true) {
                 print("Authenticated VC dismissed")
             }
@@ -146,26 +138,6 @@ class Authenticated: UIViewController {
             fatalError("Phone number not available in provider data, abort")
         }
         print("Users phone number: \(phoneNumber)")
-    }
-    
-    // Example: How to update a users identity record
-    func updateUserRecordDisplayName() {
-        
-        // Shows how we would update a users name
-        let displayName = "Nick \(arc4random_uniform(5000))"
-        
-        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-        changeRequest?.displayName = displayName
-        changeRequest?.commitChanges() { [weak self] error in
-            if let error = error {
-                print("changeRequest?.commitChanges error \(error.localizedDescription)")
-                print("logging out, account issue.")
-                self?.doLogout()
-                return
-            } else if let name = Auth.auth().currentUser?.displayName {
-                print("Updated user name: \(name)")
-            }
-        }
     }
     
     // Example: Add an event record to DB, trigger listening cloud function

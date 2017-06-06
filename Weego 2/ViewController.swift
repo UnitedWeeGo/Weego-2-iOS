@@ -8,42 +8,21 @@
 
 import UIKit
 import Firebase
-import FirebasePhoneAuthUI
+import FBSDKLoginKit
 
-class ViewController: UIViewController, FUIAuthDelegate {
+class ViewController: UIViewController, FBSDKLoginButtonDelegate {
     
-    /** @fn authUI:didSignInWithUser:error:
-     @brief Message sent after the sign in process has completed to report the signed in user or
-     error encountered.
-     @param authUI The @c FUIAuth instance sending the message.
-     @param user The signed in user if the sign in attempt was successful.
-     @param error The error that occurred during sign in, if any.
-     */
-    func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {
-        
-        if let error = error {
-            print("login error: \(error.localizedDescription)")
-        }
-        
-    }
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .gray
+        view.backgroundColor = .white
         
         _ = Auth.auth().addStateDidChangeListener { (auth, user) in
-            
-            guard let currentUser = auth.currentUser else {
-                return
+            if user != nil {
+                // User is signed in.
+            } else {
+                // No User is signed in.
             }
-            
-            print("User record state change:")
-            print("currentUser.uid \(String(describing: currentUser.uid))")
-            print("currentUser.displayName \(String(describing: currentUser.displayName))")
-            print("currentUser.phoneNumber \(String(describing: currentUser.phoneNumber))")
-            print("currentUser.photoURL \(String(describing: currentUser.photoURL))")
         }
 
     }
@@ -52,7 +31,8 @@ class ViewController: UIViewController, FUIAuthDelegate {
         super.viewDidAppear(animated)
         
         guard let _ = Auth.auth().currentUser else {
-            self.presentLoginVC()
+//            self.presentLoginVC()
+            self.showFacebookLogin()
             return
         }
         
@@ -74,27 +54,48 @@ class ViewController: UIViewController, FUIAuthDelegate {
         
     }
     
-    // How we customize a FirebaseUI VC, Temp we will roll our own
-    func authPickerViewController(forAuthUI authUI: FUIAuth) -> FUIAuthPickerViewController {
-        return AuthViewController(nibName: nil, bundle: nil, authUI: authUI)
+    func showFacebookLogin() {
+        // https://weego-id.firebaseapp.com/__/auth/handler
+        
+        let loginButton = FBSDKLoginButton()
+        loginButton.defaultAudience = .friends
+        loginButton.delegate = self
+        loginButton.center = self.view.center
+        self.view.addSubview(loginButton)
+
     }
     
-    func presentLoginVC() {
-        let authUI = FUIAuth.defaultAuthUI()
-        
-        authUI?.isSignInWithEmailHidden = true
-        authUI?.delegate = self
-        
-        let providers: [FUIAuthProvider] = [FUIPhoneAuth(authUI: FUIAuth.defaultAuthUI()!)]
-        authUI?.providers = providers
-        
-        let authViewController = authUI!.authViewController()
-        authViewController.isNavigationBarHidden = true
-        authViewController.modalTransitionStyle = .flipHorizontal
-        
-        self.present(authViewController, animated: true, completion: {
-            print("authViewController present completion")
-        })
+    // FBSDKLoginButtonDelegate methods
+    /**
+     Sent to the delegate when the button was used to logout.
+     - Parameter loginButton: The button that was clicked.
+     */
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        print("loginButtonDidLogOut")
+    }
+    
+    /**
+     Sent to the delegate when the button was used to login.
+     - Parameter loginButton: the sender
+     - Parameter result: The results of the login
+     - Parameter error: The error (if any) from the login
+     */
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        if let error = error {
+            print("loginButton delegate method error: \(error.localizedDescription)")
+            return
+        } else if result.isCancelled {
+            print("Facebook login cancelled")
+        } else {
+            let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+            Auth.auth().signIn(with: credential) { (user, error) in
+                if let error = error {
+                    print("Auth.auth().signIn error: \(error.localizedDescription)")
+                    return
+                }
+                self.showLoggedInState()
+            }
+        }
     }
     
 }

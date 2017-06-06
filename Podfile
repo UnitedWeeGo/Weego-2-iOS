@@ -15,14 +15,13 @@ target 'Weego 2' do
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
 
+  # Facebook Auth
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKLoginKit'
+  pod 'FBSDKShareKit'
+
   # pod 'Firebase/Invites'
   # pod 'Firebase/Storage'
- 
-
-  # Only pull in Phone Auth login features
-  # https://github.com/firebase/FirebaseUI-iOS
-  # Temp for testing
-  pod 'FirebaseUI/Phone', '~> 4.0'
 
   target 'Weego 2Tests' do
     inherit! :search_paths
