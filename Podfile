@@ -9,11 +9,21 @@ target 'Weego 2' do
   pod 'Crashlytics'
 
   # Pods for Weego
+
+  # Firebase
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
   pod 'Firebase/DynamicLinks'
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
+
+  # Storage
+  pod 'ReSwift'
+  pod 'ReactiveReSwift', git: 'https://github.com/ReSwift/ReactiveReSwift.git'
+
+  # RX
+  pod 'RxSwift', '~> 3.4.0'
+  pod 'RxCocoa'
 
   # Facebook Auth
   pod 'FBSDKCoreKit'

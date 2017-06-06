@@ -65,6 +65,11 @@ PODS:
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMSessionFetcher/Core (1.1.10)
   - Protobuf (3.3.0)
+  - ReactiveReSwift (3.0.6)
+  - ReSwift (4.0.0)
+  - RxCocoa (3.5.0):
+    - RxSwift (~> 3.4)
+  - RxSwift (3.4.1)
 
 DEPENDENCIES:
   - Crashlytics
@@ -77,6 +82,19 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/DynamicLinks
   - Firebase/Messaging
+  - ReactiveReSwift (from `https://github.com/ReSwift/ReactiveReSwift.git`)
+  - ReSwift
+  - RxCocoa
+  - RxSwift (~> 3.4.0)
+
+EXTERNAL SOURCES:
+  ReactiveReSwift:
+    :git: https://github.com/ReSwift/ReactiveReSwift.git
+
+CHECKOUT OPTIONS:
+  ReactiveReSwift:
+    :commit: 64345f1683f21079205a46f30969466d1b897d8c
+    :git: https://github.com/ReSwift/ReactiveReSwift.git
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
@@ -96,7 +114,11 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 30d874b96d0d76028f61fbd122801e3f030d47db
   Protobuf: d582fecf68201eac3d79ed61369ef45734394b9c
+  ReactiveReSwift: 6a2db8e436c7ebdebad86795832e68784e0e01f3
+  ReSwift: f058ef13b46ae5f463f10605ccbbb7fb04424d8d
+  RxCocoa: a0a09f45d0e5b48ecb6a4a7b4b4c89c88d3f633f
+  RxSwift: 656f8fbeca5bc372121a72d9ebdd3cd3bc0ffade
 
-PODFILE CHECKSUM: 8e13f51ada4c813f36164103e308f721fdda97af
+PODFILE CHECKSUM: 6a31dc46771d84ca7ab481cf34da3165dfdc5f63
 
 COCOAPODS: 1.2.0
