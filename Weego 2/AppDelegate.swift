@@ -47,14 +47,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     // Monitors login/out for cloud func logging of info
     _ = Auth.auth().addStateDidChangeListener { (auth, user) in
         if let user = user {
+            
+            print("User photo URL: \(user.providerData[0].photoURL?.absoluteString ?? "")")
+            
             let userRef = Database.database().reference().child("queues/login").child(user.uid)
             userRef.removeValue(completionBlock: { (error, ref) in
                 
                 let loginRecord = [
-                    "displayName": user.displayName ?? "",
-                    "photoURL": user.photoURL?.absoluteString ?? "",
-                    "fbUID": user.providerData[0].uid,
-                    "timestamp": ServerValue.timestamp()
+                    "displayName": user.providerData[0].displayName ?? "",
+                    "photoURL": user.providerData[0].photoURL?.absoluteString ?? "",
+                    "fbUID": user.providerData[0].uid
                 ] as [String : Any]
                 
                 ref.setValue(loginRecord)
