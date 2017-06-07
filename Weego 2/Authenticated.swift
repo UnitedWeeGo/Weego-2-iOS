@@ -151,7 +151,12 @@ class Authenticated: ASViewController<ASDisplayNode> {
     let title = "Event title \(arc4random_uniform(5000))"
     lastEvent = WeegoEvent(authorUID: authorUID, authorDisplayName: displayName, title: title)
 
-    let childUpdates = ["/user-events/\(authorUID)/\(lastEventUID!)/": lastEvent.toJSON(), "/participants/\(lastEventUID!)": [authorUID: true]]
+    // Duplication of event data is a Firebase Fan-out strategy
+    let childUpdates = [
+        "/events/\(lastEventUID!)/": lastEvent.toJSON(),
+        "/user-events/\(authorUID)/\(lastEventUID!)/": lastEvent.toJSON(),
+        "/participants/\(lastEventUID!)": [authorUID: true]
+    ]
     ref.updateChildValues(childUpdates)
 
     // Create listeners for changes to data

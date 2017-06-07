@@ -36,14 +36,6 @@ class ViewController: ASViewController<ASDisplayNode>, FBSDKLoginButtonDelegate 
 
     view.backgroundColor = .white
 
-    _ = Auth.auth().addStateDidChangeListener { (auth, user) in
-      if user != nil {
-        // User is signed in.
-      } else {
-        // No User is signed in.
-      }
-    }
-
     storage.rxState.flatMapLatest { state  in
       return Observable.just(state.userState.authed)
       }

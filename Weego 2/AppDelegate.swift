@@ -1,5 +1,6 @@
 import UIKit
 import Firebase
+import FirebaseDatabase
 import NotificationCenter
 import UserNotifications
 import Fabric
@@ -43,7 +44,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     window?.makeKeyAndVisible()
     window?.makeKeyAndVisible()
 
-
+    // Monitors login/out for cloud func logging of info
+    _ = Auth.auth().addStateDidChangeListener { (auth, user) in
+        if let user = user {
+            let userRef = Database.database().reference().child("queues/login").child(user.uid)
+            userRef.removeValue(completionBlock: { (error, ref) in
+                
+                let loginRecord = [
+                    "displayName": user.displayName ?? "",
+                    "photoURL": user.photoURL?.absoluteString ?? "",
+                    "fbUID": user.providerData[0].uid,
+                    "timestamp": ServerValue.timestamp()
+                ] as [String : Any]
+                
+                ref.setValue(loginRecord)
+            })
+        } else {
+            // No User is signed in.
+        }
+    }
+    
     return true
   }
 
