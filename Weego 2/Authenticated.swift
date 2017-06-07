@@ -177,7 +177,10 @@ class Authenticated: ASViewController<ASDisplayNode> {
     event.title = "Updated title \(arc4random_uniform(5000))"
     lastEvent = event
     let ref = Database.database().reference()
-    let childUpdates = ["/user-events/\(event.authorUID)/\(lastEventUID!)/": lastEvent.toJSON()]
+    let childUpdates = [
+        "/user-events/\(event.authorUID)/\(lastEventUID!)/": lastEvent.toJSON(),
+        "/events/\(lastEventUID!)/": lastEvent.toJSON()
+    ]
     ref.updateChildValues(childUpdates)
   }
 
