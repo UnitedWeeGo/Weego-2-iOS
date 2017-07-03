@@ -22,6 +22,9 @@
 		76DBBF4A1EE0F96300186FBB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76DBBF471EE0F96300186FBB /* GoogleService-Info.plist */; };
 		8B37AC2F1F0A5C8100195004 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B37AC2E1F0A5C8100195004 /* MainController.swift */; };
 		8B37AC331F0A5EC300195004 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B37AC321F0A5EC300195004 /* BaseViewController.swift */; };
+		8B37AC371F0A6EA300195004 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B37AC361F0A6EA300195004 /* AuthController.swift */; };
+		8B37AC3A1F0A71CE00195004 /* AuthNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B37AC391F0A71CE00195004 /* AuthNode.swift */; };
+		8B37AC3D1F0A725100195004 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B37AC3C1F0A725100195004 /* AuthViewModel.swift */; };
 		8BC611C91EE6A9E6005C5E89 /* ReactiveReSwiftBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC611C81EE6A9E6005C5E89 /* ReactiveReSwiftBridge.swift */; };
 		8BC611CC1EE6AA56005C5E89 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC611CB1EE6AA56005C5E89 /* AppState.swift */; };
 		8BC611CF1EE6AA8C005C5E89 /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC611CE1EE6AA8C005C5E89 /* AppReducer.swift */; };
@@ -75,6 +78,9 @@
 		76DBBF4B1EE0FADE00186FBB /* Weego 2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Weego 2.entitlements"; sourceTree = "<group>"; };
 		8B37AC2E1F0A5C8100195004 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		8B37AC321F0A5EC300195004 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		8B37AC361F0A6EA300195004 /* AuthController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
+		8B37AC391F0A71CE00195004 /* AuthNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthNode.swift; sourceTree = "<group>"; };
+		8B37AC3C1F0A725100195004 /* AuthViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		8BC611C81EE6A9E6005C5E89 /* ReactiveReSwiftBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveReSwiftBridge.swift; sourceTree = "<group>"; };
 		8BC611CB1EE6AA56005C5E89 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		8BC611CE1EE6AA8C005C5E89 /* AppReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
@@ -214,6 +220,7 @@
 		8B37AC2B1F0A511200195004 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				8B37AC341F0A6E8500195004 /* Auth */,
 				8B37AC2C1F0A5ACD00195004 /* Main */,
 			);
 			path = Scenes;
@@ -249,6 +256,40 @@
 				8B37AC321F0A5EC300195004 /* BaseViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		8B37AC341F0A6E8500195004 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				8B37AC3B1F0A724600195004 /* View Model */,
+				8B37AC381F0A71C400195004 /* Nodes */,
+				8B37AC351F0A6E9B00195004 /* Controller */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		8B37AC351F0A6E9B00195004 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8B37AC361F0A6EA300195004 /* AuthController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8B37AC381F0A71C400195004 /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				8B37AC391F0A71CE00195004 /* AuthNode.swift */,
+			);
+			path = Nodes;
+			sourceTree = "<group>";
+		};
+		8B37AC3B1F0A724600195004 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				8B37AC3C1F0A725100195004 /* AuthViewModel.swift */,
+			);
+			path = "View Model";
 			sourceTree = "<group>";
 		};
 		8BC611C61EE6A9BD005C5E89 /* Shared */ = {
@@ -613,12 +654,15 @@
 				8BC611D51EE6B3CB005C5E89 /* UserReducer.swift in Sources */,
 				76DBBF1C1EE0F7D200186FBB /* ViewController.swift in Sources */,
 				767147CE1EE50EDD008B92F2 /* Date.swift in Sources */,
+				8B37AC3A1F0A71CE00195004 /* AuthNode.swift in Sources */,
 				8BC611CC1EE6AA56005C5E89 /* AppState.swift in Sources */,
+				8B37AC371F0A6EA300195004 /* AuthController.swift in Sources */,
 				8B37AC2F1F0A5C8100195004 /* MainController.swift in Sources */,
 				8BC611C91EE6A9E6005C5E89 /* ReactiveReSwiftBridge.swift in Sources */,
 				767147C41EE4971A008B92F2 /* Authenticated.swift in Sources */,
 				8BC611D11EE6AB89005C5E89 /* Storage.swift in Sources */,
 				8BC611D31EE6B30B005C5E89 /* UserState.swift in Sources */,
+				8B37AC3D1F0A725100195004 /* AuthViewModel.swift in Sources */,
 				767147CB1EE4EF90008B92F2 /* WeegoEvent.swift in Sources */,
 				8BC611CF1EE6AA8C005C5E89 /* AppReducer.swift in Sources */,
 				76DBBF1A1EE0F7D200186FBB /* AppDelegate.swift in Sources */,
