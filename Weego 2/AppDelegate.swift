@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     // Facebook
     FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
-    let rootViewController = ViewController(withStorage: mainStore!)
+    let rootViewController = MainController(withStorage: mainStore!)
     let navigationController = ASNavigationController(rootViewController: rootViewController)
     navigationController.isNavigationBarHidden = true
 

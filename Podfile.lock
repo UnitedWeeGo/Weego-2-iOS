@@ -8,28 +8,28 @@ PODS:
   - Crashlytics (3.8.4):
     - Fabric (~> 1.6.3)
   - Fabric (1.6.11)
-  - FBSDKCoreKit (4.23.0):
+  - FBSDKCoreKit (4.24.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.23.0):
+  - FBSDKLoginKit (4.24.0):
     - FBSDKCoreKit
-  - FBSDKShareKit (4.23.0):
+  - FBSDKShareKit (4.24.0):
     - FBSDKCoreKit
-  - Firebase/Auth (4.0.0):
+  - Firebase/Auth (4.0.3):
     - Firebase/Core
     - FirebaseAuth (= 4.0.0)
-  - Firebase/Core (4.0.0):
-    - FirebaseAnalytics (= 4.0.0)
-    - FirebaseCore (= 4.0.0)
-  - Firebase/Database (4.0.0):
+  - Firebase/Core (4.0.3):
+    - FirebaseAnalytics (= 4.0.2)
+    - FirebaseCore (= 4.0.3)
+  - Firebase/Database (4.0.3):
     - Firebase/Core
     - FirebaseDatabase (= 4.0.0)
-  - Firebase/DynamicLinks (4.0.0):
+  - Firebase/DynamicLinks (4.0.3):
     - Firebase/Core
     - FirebaseDynamicLinks (= 2.0.0)
-  - Firebase/Messaging (4.0.0):
+  - Firebase/Messaging (4.0.3):
     - Firebase/Core
     - FirebaseMessaging (= 2.0.0)
-  - FirebaseAnalytics (4.0.0):
+  - FirebaseAnalytics (4.0.2):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
@@ -37,7 +37,7 @@ PODS:
     - FirebaseAnalytics (~> 4.0)
     - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
     - GTMSessionFetcher/Core (~> 1.1)
-  - FirebaseCore (4.0.0):
+  - FirebaseCore (4.0.3):
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
   - FirebaseDatabase (4.0.0):
     - FirebaseAnalytics (~> 4.0)
@@ -64,51 +64,51 @@ PODS:
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMSessionFetcher/Core (1.1.10)
-  - PINCache (3.0.1-beta.4):
-    - PINCache/Arc-exception-safe (= 3.0.1-beta.4)
-    - PINCache/Core (= 3.0.1-beta.4)
-  - PINCache/Arc-exception-safe (3.0.1-beta.4):
+  - PINCache (3.0.1-beta.5):
+    - PINCache/Arc-exception-safe (= 3.0.1-beta.5)
+    - PINCache/Core (= 3.0.1-beta.5)
+  - PINCache/Arc-exception-safe (3.0.1-beta.5):
     - PINCache/Core
-  - PINCache/Core (3.0.1-beta.4):
+  - PINCache/Core (3.0.1-beta.5):
     - PINOperation (= 1.0.3)
   - PINOperation (1.0.3)
-  - PINRemoteImage/Core (3.0.0-beta.9):
+  - PINRemoteImage/Core (3.0.0-beta.11):
     - PINOperation
-  - PINRemoteImage/iOS (3.0.0-beta.9):
+  - PINRemoteImage/iOS (3.0.0-beta.11):
     - PINRemoteImage/Core
-  - PINRemoteImage/PINCache (3.0.0-beta.9):
-    - PINCache (= 3.0.1-beta.4)
+  - PINRemoteImage/PINCache (3.0.0-beta.11):
+    - PINCache (= 3.0.1-beta.5)
     - PINRemoteImage/Core
   - Protobuf (3.3.0)
   - ReactiveReSwift (3.0.6)
   - ReSwift (4.0.0)
   - RxCocoa (3.5.0):
     - RxSwift (~> 3.4)
-  - RxSwift (3.4.1)
-  - Texture (2.3.2):
-    - Texture/PINRemoteImage (= 2.3.2)
-  - Texture/Core (2.3.2)
-  - Texture/PINRemoteImage (2.3.2):
-    - PINRemoteImage/iOS (= 3.0.0-beta.9)
+  - RxSwift (3.5.0)
+  - Texture (2.3.4):
+    - Texture/PINRemoteImage (= 2.3.4)
+  - Texture/Core (2.3.4)
+  - Texture/PINRemoteImage (2.3.4):
+    - PINRemoteImage/iOS (= 3.0.0-beta.11)
     - PINRemoteImage/PINCache
     - Texture/Core
 
 DEPENDENCIES:
-  - Crashlytics
-  - Fabric
-  - FBSDKCoreKit
-  - FBSDKLoginKit
-  - FBSDKShareKit
+  - Crashlytics (= 3.8.4)
+  - Fabric (= 1.6.11)
+  - FBSDKCoreKit (= 4.24.0)
+  - FBSDKLoginKit (= 4.24.0)
+  - FBSDKShareKit (= 4.24.0)
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
   - Firebase/DynamicLinks
   - Firebase/Messaging
   - ReactiveReSwift (from `https://github.com/ReSwift/ReactiveReSwift.git`)
-  - ReSwift
-  - RxCocoa
-  - RxSwift (~> 3.4.0)
-  - Texture
+  - ReSwift (= 4.0.0)
+  - RxCocoa (= 3.5.0)
+  - RxSwift (= 3.5.0)
+  - Texture (= 2.3.4)
 
 EXTERNAL SOURCES:
   ReactiveReSwift:
@@ -116,36 +116,36 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   ReactiveReSwift:
-    :commit: 64345f1683f21079205a46f30969466d1b897d8c
+    :commit: ed97efa7be8e9d6181f9acedd72c2fb4ff67dab5
     :git: https://github.com/ReSwift/ReactiveReSwift.git
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
-  FBSDKCoreKit: d7829f5a69901cd7296105328e4c3c3fc7da6518
-  FBSDKLoginKit: 6b92bd65f319d669d2b0730e49db495ef1660566
-  FBSDKShareKit: 65751c3b9937ab9d594e6c37611ecc115ceeb448
-  Firebase: 284eea779b73fdff309791817da7c68bff8dd572
-  FirebaseAnalytics: 6f08e746f7d66f5452931bc2e822b5df9c66b64a
+  FBSDKCoreKit: f8c9eb0dd34a9cd277c7b60da4b32226d142502d
+  FBSDKLoginKit: 1214c6d5a1c4995b694d8db8a9ba6910c6028acf
+  FBSDKShareKit: a2ed9d7781a4eda9ac20d7404305e795b10251ac
+  Firebase: 9e33fdfbca37cab635c693883caa90a4475b842b
+  FirebaseAnalytics: ad41720e3e67fc63fbe3d2948d3e26932a8de311
   FirebaseAuth: ebb6abcbabae00fc47446d690c19ce68d8484fde
-  FirebaseCore: 85ad466044c2f013cdb167f85d426d15b128114a
+  FirebaseCore: c709067051de07bdaffdc4e735cd7299a23c463a
   FirebaseDatabase: d829b3a8c3e2ac7a16773c5df226966b0805dfc2
   FirebaseDynamicLinks: ad3bef2e8addfa1490af9db02201429c5c9447dd
   FirebaseInstanceID: 9fbf536668f4d3f0880e7438456dabd1376e294b
   FirebaseMessaging: 227406c05b0dc9290702d2e9f18ab5528f0c2cf2
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 30d874b96d0d76028f61fbd122801e3f030d47db
-  PINCache: a89c8f609232afac77128557bd12c861844423d7
+  PINCache: 98e7b1ef782824ad231ade51987c218b758c30d8
   PINOperation: ac23db44796d4a564ecf9b5ea7163510f579b71d
-  PINRemoteImage: e4e02e15a6f96cedbcef2abf1c9c1228dc9897d7
+  PINRemoteImage: d71988f11914a050d6d4cf51efc4ad1de8c0a9d8
   Protobuf: d582fecf68201eac3d79ed61369ef45734394b9c
-  ReactiveReSwift: 6a2db8e436c7ebdebad86795832e68784e0e01f3
+  ReactiveReSwift: 1848cb84ffc6f82bb558ec74526ca73103b8244e
   ReSwift: f058ef13b46ae5f463f10605ccbbb7fb04424d8d
   RxCocoa: a0a09f45d0e5b48ecb6a4a7b4b4c89c88d3f633f
-  RxSwift: 656f8fbeca5bc372121a72d9ebdd3cd3bc0ffade
-  Texture: 18664254419f35de27af76399b3b265cbad5740a
+  RxSwift: 18ee9d78b45edb3b0b7e79916b47a116e6dbc842
+  Texture: 8cf0872fe33328c20d7e6c1fcbf1f23a82162f2f
 
-PODFILE CHECKSUM: '08e1043252a297a2c40dff6d019708d8a7f576f2'
+PODFILE CHECKSUM: 8615f073b45072505b94461bf495f55931520f2d
 
 COCOAPODS: 1.2.0

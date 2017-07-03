@@ -5,8 +5,8 @@ target 'Weego 2' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
-  pod 'Fabric'
-  pod 'Crashlytics'
+  pod 'Fabric', '1.6.11'
+  pod 'Crashlytics', '3.8.4'
 
   # Pods for Weego
 
@@ -18,20 +18,20 @@ target 'Weego 2' do
   pod 'Firebase/Auth'
 
   # Storage
-  pod 'ReSwift'
+  pod 'ReSwift', '4.0.0'
   pod 'ReactiveReSwift', git: 'https://github.com/ReSwift/ReactiveReSwift.git'
 
   # RX
-  pod 'RxSwift', '~> 3.4.0'
-  pod 'RxCocoa'
+  pod 'RxSwift', '3.5.0'
+  pod 'RxCocoa', '3.5.0'
 
   # UI
-  pod 'Texture'
+  pod 'Texture', '2.3.4'
 
   # Facebook Auth
-  pod 'FBSDKCoreKit'
-  pod 'FBSDKLoginKit'
-  pod 'FBSDKShareKit'
+  pod 'FBSDKCoreKit', '4.24.0'
+  pod 'FBSDKLoginKit', '4.24.0'
+  pod 'FBSDKShareKit', '4.24.0'
 
   # pod 'Firebase/Invites'
   # pod 'Firebase/Storage'
