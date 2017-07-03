@@ -1,11 +1,3 @@
-//
-//  Authenticated.swift
-//  Weego 2
-//
-//  Created by Nicholas Velloff on 6/4/17.
-//  Copyright © 2017 UnitedWeGo LLC. All rights reserved.
-//
-
 import UIKit
 import Firebase
 import FirebaseDatabase
@@ -159,7 +151,12 @@ class Authenticated: ASViewController<ASDisplayNode> {
     let title = "Event title \(arc4random_uniform(5000))"
     lastEvent = WeegoEvent(authorUID: authorUID, authorDisplayName: displayName, title: title)
 
-    let childUpdates = ["/user-events/\(authorUID)/\(lastEventUID!)/": lastEvent.toJSON(), "/participants/\(lastEventUID!)": [authorUID: true]]
+    // Duplication of event data is a Firebase Fan-out strategy
+    let childUpdates = [
+        "/events/\(lastEventUID!)/": lastEvent.toJSON(),
+        "/user-events/\(authorUID)/\(lastEventUID!)/": lastEvent.toJSON(),
+        "/participants/\(lastEventUID!)": [authorUID: true]
+    ]
     ref.updateChildValues(childUpdates)
 
     // Create listeners for changes to data
@@ -180,7 +177,10 @@ class Authenticated: ASViewController<ASDisplayNode> {
     event.title = "Updated title \(arc4random_uniform(5000))"
     lastEvent = event
     let ref = Database.database().reference()
-    let childUpdates = ["/user-events/\(event.authorUID)/\(lastEventUID!)/": lastEvent.toJSON()]
+    let childUpdates = [
+        "/user-events/\(event.authorUID)/\(lastEventUID!)/": lastEvent.toJSON(),
+        "/events/\(lastEventUID!)/": lastEvent.toJSON()
+    ]
     ref.updateChildValues(childUpdates)
   }
 

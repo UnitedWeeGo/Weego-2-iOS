@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  Weego 2
-//
-//  Created by Nicholas Velloff on 6/1/17.
-//  Copyright © 2017 UnitedWeGo LLC. All rights reserved.
-//
-
 import UIKit
 import Firebase
 import FBSDKLoginKit
@@ -43,14 +35,6 @@ class ViewController: ASViewController<ASDisplayNode>, FBSDKLoginButtonDelegate 
     super.viewDidLoad()
 
     view.backgroundColor = .white
-
-    _ = Auth.auth().addStateDidChangeListener { (auth, user) in
-      if user != nil {
-        // User is signed in.
-      } else {
-        // No User is signed in.
-      }
-    }
 
     storage.rxState.flatMapLatest { state  in
       return Observable.just(state.userState.authed)
@@ -90,6 +74,7 @@ class ViewController: ASViewController<ASDisplayNode>, FBSDKLoginButtonDelegate 
 
     let loginButton = FBSDKLoginButton()
     loginButton.defaultAudience = .friends
+    loginButton.loginBehavior = .systemAccount
     loginButton.delegate = self
     loginButton.center = self.view.center
     self.view.addSubview(loginButton)
