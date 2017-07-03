@@ -25,6 +25,8 @@
 		8B37AC371F0A6EA300195004 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B37AC361F0A6EA300195004 /* AuthController.swift */; };
 		8B37AC3A1F0A71CE00195004 /* AuthNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B37AC391F0A71CE00195004 /* AuthNode.swift */; };
 		8B37AC3D1F0A725100195004 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B37AC3C1F0A725100195004 /* AuthViewModel.swift */; };
+		8B37AC401F0A865100195004 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B37AC3F1F0A865100195004 /* ColorManager.swift */; };
+		8B37AC431F0A86AA00195004 /* TextStyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B37AC421F0A86AA00195004 /* TextStyleManager.swift */; };
 		8BC611C91EE6A9E6005C5E89 /* ReactiveReSwiftBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC611C81EE6A9E6005C5E89 /* ReactiveReSwiftBridge.swift */; };
 		8BC611CC1EE6AA56005C5E89 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC611CB1EE6AA56005C5E89 /* AppState.swift */; };
 		8BC611CF1EE6AA8C005C5E89 /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC611CE1EE6AA8C005C5E89 /* AppReducer.swift */; };
@@ -81,6 +83,8 @@
 		8B37AC361F0A6EA300195004 /* AuthController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
 		8B37AC391F0A71CE00195004 /* AuthNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthNode.swift; sourceTree = "<group>"; };
 		8B37AC3C1F0A725100195004 /* AuthViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		8B37AC3F1F0A865100195004 /* ColorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
+		8B37AC421F0A86AA00195004 /* TextStyleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextStyleManager.swift; sourceTree = "<group>"; };
 		8BC611C81EE6A9E6005C5E89 /* ReactiveReSwiftBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveReSwiftBridge.swift; sourceTree = "<group>"; };
 		8BC611CB1EE6AA56005C5E89 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		8BC611CE1EE6AA8C005C5E89 /* AppReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
@@ -292,9 +296,27 @@
 			path = "View Model";
 			sourceTree = "<group>";
 		};
+		8B37AC3E1F0A864700195004 /* Color Manager */ = {
+			isa = PBXGroup;
+			children = (
+				8B37AC3F1F0A865100195004 /* ColorManager.swift */,
+			);
+			path = "Color Manager";
+			sourceTree = "<group>";
+		};
+		8B37AC411F0A86A000195004 /* Text Style Manager */ = {
+			isa = PBXGroup;
+			children = (
+				8B37AC421F0A86AA00195004 /* TextStyleManager.swift */,
+			);
+			path = "Text Style Manager";
+			sourceTree = "<group>";
+		};
 		8BC611C61EE6A9BD005C5E89 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				8B37AC411F0A86A000195004 /* Text Style Manager */,
+				8B37AC3E1F0A864700195004 /* Color Manager */,
 				8BC611C71EE6A9CD005C5E89 /* Storage */,
 			);
 			path = Shared;
@@ -658,11 +680,13 @@
 				8BC611CC1EE6AA56005C5E89 /* AppState.swift in Sources */,
 				8B37AC371F0A6EA300195004 /* AuthController.swift in Sources */,
 				8B37AC2F1F0A5C8100195004 /* MainController.swift in Sources */,
+				8B37AC401F0A865100195004 /* ColorManager.swift in Sources */,
 				8BC611C91EE6A9E6005C5E89 /* ReactiveReSwiftBridge.swift in Sources */,
 				767147C41EE4971A008B92F2 /* Authenticated.swift in Sources */,
 				8BC611D11EE6AB89005C5E89 /* Storage.swift in Sources */,
 				8BC611D31EE6B30B005C5E89 /* UserState.swift in Sources */,
 				8B37AC3D1F0A725100195004 /* AuthViewModel.swift in Sources */,
+				8B37AC431F0A86AA00195004 /* TextStyleManager.swift in Sources */,
 				767147CB1EE4EF90008B92F2 /* WeegoEvent.swift in Sources */,
 				8BC611CF1EE6AA8C005C5E89 /* AppReducer.swift in Sources */,
 				76DBBF1A1EE0F7D200186FBB /* AppDelegate.swift in Sources */,

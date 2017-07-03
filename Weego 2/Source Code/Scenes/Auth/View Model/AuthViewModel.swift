@@ -1,6 +1,7 @@
 import RxSwift
 
 protocol AuthViewModelInputs {
+  func didRequestToLoginWithFacebook() -> Void
 }
 
 protocol AuthViewModelOutputs {
@@ -16,6 +17,10 @@ final class AuthViewModel: AuthViewModelInputs, AuthViewModelOutputs {
 
   init(withStorage storage: Storage) {
     self.storage = storage
+  }
+
+  func didRequestToLoginWithFacebook() {
+
   }
 }
 
