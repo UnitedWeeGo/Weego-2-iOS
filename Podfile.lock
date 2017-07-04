@@ -81,6 +81,7 @@ PODS:
     - PINRemoteImage/Core
   - Protobuf (3.3.0)
   - ReactiveReSwift (3.0.6)
+  - Result (3.2.3)
   - ReSwift (4.0.0)
   - RxCocoa (3.5.0):
     - RxSwift (~> 3.4)
@@ -92,6 +93,7 @@ PODS:
     - PINRemoteImage/iOS (= 3.0.0-beta.11)
     - PINRemoteImage/PINCache
     - Texture/Core
+  - TTGSnackbar (1.5.2)
 
 DEPENDENCIES:
   - Crashlytics (= 3.8.4)
@@ -105,10 +107,12 @@ DEPENDENCIES:
   - Firebase/DynamicLinks
   - Firebase/Messaging
   - ReactiveReSwift (from `https://github.com/ReSwift/ReactiveReSwift.git`)
+  - Result (= 3.2.3)
   - ReSwift (= 4.0.0)
   - RxCocoa (= 3.5.0)
   - RxSwift (= 3.5.0)
   - Texture (= 2.3.4)
+  - TTGSnackbar (= 1.5.2)
 
 EXTERNAL SOURCES:
   ReactiveReSwift:
@@ -141,11 +145,13 @@ SPEC CHECKSUMS:
   PINRemoteImage: d71988f11914a050d6d4cf51efc4ad1de8c0a9d8
   Protobuf: d582fecf68201eac3d79ed61369ef45734394b9c
   ReactiveReSwift: 1848cb84ffc6f82bb558ec74526ca73103b8244e
+  Result: 128640a6347e8d2ae48b142556739a2d13f90ce6
   ReSwift: f058ef13b46ae5f463f10605ccbbb7fb04424d8d
   RxCocoa: a0a09f45d0e5b48ecb6a4a7b4b4c89c88d3f633f
   RxSwift: 18ee9d78b45edb3b0b7e79916b47a116e6dbc842
   Texture: 8cf0872fe33328c20d7e6c1fcbf1f23a82162f2f
+  TTGSnackbar: ca69045c72188fef27f575581052d72aff15abe2
 
-PODFILE CHECKSUM: 8615f073b45072505b94461bf495f55931520f2d
+PODFILE CHECKSUM: d13787e5447ad5a97682a400194d48ddecd036e6
 
 COCOAPODS: 1.2.0

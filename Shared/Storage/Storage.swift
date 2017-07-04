@@ -15,9 +15,9 @@ struct Storage {
         return action
     }
 
-    let userIsAuthed = (Auth.auth().currentUser != nil) ? true : false
-
-    let userState = UserState(withIsAuthed: userIsAuthed);
+    let userAuthState = (Auth.auth().currentUser != nil) ? UserAuthStateResult.success(.authenticated) : UserAuthStateResult.success(.idle)
+    print("========", Auth.auth().currentUser)
+    let userState = UserState(withUser: Auth.auth().currentUser, withAuthState: userAuthState);
     let initialState = AppState(withUserState: userState);
 
     storage = Store(

@@ -1,10 +1,12 @@
 import RxSwift
+import FBSDKLoginKit
 
 protocol AuthViewModelInputs {
-  func didRequestToLoginWithFacebook() -> Void
+  func didRequestToLoginWithFacebookFromViewController(_ vc: UIViewController) -> Void
 }
 
 protocol AuthViewModelOutputs {
+  var state: Observable<UserAuthStateResult> { get }
 }
 
 protocol AuthViewModelType {
@@ -15,12 +17,19 @@ protocol AuthViewModelType {
 final class AuthViewModel: AuthViewModelInputs, AuthViewModelOutputs {
   private let storage: Storage
 
+  let state: Observable<UserAuthStateResult>
+
   init(withStorage storage: Storage) {
     self.storage = storage
+
+    state = storage.rxState
+      .map { $0.userState.authState }
+      .shareReplay(1)
   }
 
-  func didRequestToLoginWithFacebook() {
-
+  func didRequestToLoginWithFacebookFromViewController(_ vc: UIViewController) {
+    let worker = FacebookAuthWorker(withStorage: storage, withAuthViewController: vc)
+    _ = worker.execute().subscribe();
   }
 }
 

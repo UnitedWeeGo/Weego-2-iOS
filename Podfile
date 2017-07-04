@@ -27,6 +27,10 @@ target 'Weego 2' do
 
   # UI
   pod 'Texture', '2.3.4'
+  pod 'TTGSnackbar', '1.5.2'
+
+  # Random
+  pod 'Result', '3.2.3'
 
   # Facebook Auth
   pod 'FBSDKCoreKit', '4.24.0'

@@ -26,19 +26,19 @@ class Authenticated: ASViewController<ASDisplayNode> {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    storage.rxState.flatMapLatest { state  in
-      return Observable.just(state.userState.authed)
-      }
-      .filter { !$0 }
-      .distinctUntilChanged()
-      .subscribe(onNext: { [weak self] authed in
-        guard let weakSelf = self else { return }
-        print("===== PFFFFFFF! User loged out!")
-        weakSelf.presentingViewController?.dismiss(animated: true) {
-          print("Authenticated VC dismissed")
-        }
-      })
-      .addDisposableTo(disposeBag);
+//    storage.rxState.flatMapLatest { state  in
+//      return Observable.just(state.userState.authed)
+//      }
+//      .filter { !$0 }
+//      .distinctUntilChanged()
+//      .subscribe(onNext: { [weak self] authed in
+//        guard let weakSelf = self else { return }
+//        print("===== PFFFFFFF! User loged out!")
+//        weakSelf.presentingViewController?.dismiss(animated: true) {
+//          print("Authenticated VC dismissed")
+//        }
+//      })
+//      .addDisposableTo(disposeBag);
 
     let logoutBtn = UIButton(type: .system)
     logoutBtn.setTitle("Logout", for: .normal)
@@ -186,8 +186,8 @@ class Authenticated: ASViewController<ASDisplayNode> {
 
   private func userDidLogOut()
   {
-    let action = UserDidLogOutAction()
-    storage.dispatch(action)
+//    let action = UserDidLogOutAction()
+//    storage.dispatch(action)
   }
 
 }

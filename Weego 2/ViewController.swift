@@ -5,14 +5,6 @@ import AsyncDisplayKit
 import ReactiveReSwift
 import RxSwift
 
-struct UserDidAuthAction: Action {
-  let authed: Bool = true
-}
-
-struct UserDidLogOutAction: Action {
-  let authed: Bool = false
-}
-
 class ViewController: ASViewController<ASDisplayNode>, FBSDKLoginButtonDelegate {
   private let storage: Storage
   private let disposeBag = DisposeBag()
@@ -36,21 +28,21 @@ class ViewController: ASViewController<ASDisplayNode>, FBSDKLoginButtonDelegate 
 
     view.backgroundColor = .white
 
-    storage.rxState.flatMapLatest { state  in
-      return Observable.just(state.userState.authed)
-      }
-      .distinctUntilChanged()
-      .subscribe(onNext: { [weak self] authed in
-        guard let weakSelf = self else { return }
-        if authed {
-          print("===== WOHOOOOO! User loged in!")
-          weakSelf.showLoggedInState()
-        } else {
-          print("===== PFFFFFFF! User loged out!")
-          weakSelf.showFacebookLogin()
-        }
-      })
-      .addDisposableTo(disposeBag);
+//    storage.rxState.flatMapLatest { state  in
+//      return Observable.just(state.userState.authed)
+//      }
+//      .distinctUntilChanged()
+//      .subscribe(onNext: { [weak self] authed in
+//        guard let weakSelf = self else { return }
+//        if authed {
+//          print("===== WOHOOOOO! User loged in!")
+//          weakSelf.showLoggedInState()
+//        } else {
+//          print("===== PFFFFFFF! User loged out!")
+//          weakSelf.showFacebookLogin()
+//        }
+//      })
+//      .addDisposableTo(disposeBag);
 
   }
 
@@ -118,14 +110,14 @@ class ViewController: ASViewController<ASDisplayNode>, FBSDKLoginButtonDelegate 
   //THIS MUST MOVE TO WORKERS
   private func userDidLogin()
   {
-    let action = UserDidAuthAction()
-    storage.dispatch(action)
+//    let action = UserDidAuthAction()
+//    storage.dispatch(action)
   }
 
   private func userDidLogOut()
   {
-    let action = UserDidLogOutAction()
-    storage.dispatch(action)
+//    let action = UserDidLogOutAction()
+//    storage.dispatch(action)
   }
 
 }

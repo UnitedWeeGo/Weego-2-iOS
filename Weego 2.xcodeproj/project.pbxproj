@@ -27,6 +27,12 @@
 		8B37AC3D1F0A725100195004 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B37AC3C1F0A725100195004 /* AuthViewModel.swift */; };
 		8B37AC401F0A865100195004 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B37AC3F1F0A865100195004 /* ColorManager.swift */; };
 		8B37AC431F0A86AA00195004 /* TextStyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B37AC421F0A86AA00195004 /* TextStyleManager.swift */; };
+		8B9194471F0BB1A00096C39E /* ASDisplayNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9194461F0BB1A00096C39E /* ASDisplayNode.swift */; };
+		8B91944A1F0BB6340096C39E /* AuthActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9194491F0BB6340096C39E /* AuthActions.swift */; };
+		8B91944D1F0BB6D00096C39E /* FacebookAuthWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B91944C1F0BB6D00096C39E /* FacebookAuthWorker.swift */; };
+		8B9194501F0BB6F90096C39E /* Worker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B91944F1F0BB6F90096C39E /* Worker.swift */; };
+		8B9194521F0BB81F0096C39E /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9194511F0BB81F0096C39E /* Observable.swift */; };
+		8B9194551F0BC2C10096C39E /* WEResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9194541F0BC2C10096C39E /* WEResult.swift */; };
 		8BC611C91EE6A9E6005C5E89 /* ReactiveReSwiftBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC611C81EE6A9E6005C5E89 /* ReactiveReSwiftBridge.swift */; };
 		8BC611CC1EE6AA56005C5E89 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC611CB1EE6AA56005C5E89 /* AppState.swift */; };
 		8BC611CF1EE6AA8C005C5E89 /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC611CE1EE6AA8C005C5E89 /* AppReducer.swift */; };
@@ -85,6 +91,12 @@
 		8B37AC3C1F0A725100195004 /* AuthViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		8B37AC3F1F0A865100195004 /* ColorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
 		8B37AC421F0A86AA00195004 /* TextStyleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextStyleManager.swift; sourceTree = "<group>"; };
+		8B9194461F0BB1A00096C39E /* ASDisplayNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASDisplayNode.swift; sourceTree = "<group>"; };
+		8B9194491F0BB6340096C39E /* AuthActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthActions.swift; sourceTree = "<group>"; };
+		8B91944C1F0BB6D00096C39E /* FacebookAuthWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookAuthWorker.swift; sourceTree = "<group>"; };
+		8B91944F1F0BB6F90096C39E /* Worker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Worker.swift; sourceTree = "<group>"; };
+		8B9194511F0BB81F0096C39E /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		8B9194541F0BC2C10096C39E /* WEResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WEResult.swift; sourceTree = "<group>"; };
 		8BC611C81EE6A9E6005C5E89 /* ReactiveReSwiftBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveReSwiftBridge.swift; sourceTree = "<group>"; };
 		8BC611CB1EE6AA56005C5E89 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		8BC611CE1EE6AA8C005C5E89 /* AppReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
@@ -149,6 +161,8 @@
 			isa = PBXGroup;
 			children = (
 				767147CD1EE50EDD008B92F2 /* Date.swift */,
+				8B9194461F0BB1A00096C39E /* ASDisplayNode.swift */,
+				8B9194511F0BB81F0096C39E /* Observable.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -265,6 +279,8 @@
 		8B37AC341F0A6E8500195004 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				8B91944B1F0BB6BE0096C39E /* Workers */,
+				8B9194481F0BB6250096C39E /* Actions */,
 				8B37AC3B1F0A724600195004 /* View Model */,
 				8B37AC381F0A71C400195004 /* Nodes */,
 				8B37AC351F0A6E9B00195004 /* Controller */,
@@ -312,9 +328,43 @@
 			path = "Text Style Manager";
 			sourceTree = "<group>";
 		};
+		8B9194481F0BB6250096C39E /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				8B9194491F0BB6340096C39E /* AuthActions.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		8B91944B1F0BB6BE0096C39E /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				8B91944C1F0BB6D00096C39E /* FacebookAuthWorker.swift */,
+			);
+			path = Workers;
+			sourceTree = "<group>";
+		};
+		8B91944E1F0BB6F00096C39E /* Worker */ = {
+			isa = PBXGroup;
+			children = (
+				8B91944F1F0BB6F90096C39E /* Worker.swift */,
+			);
+			path = Worker;
+			sourceTree = "<group>";
+		};
+		8B9194531F0BC2750096C39E /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				8B9194541F0BC2C10096C39E /* WEResult.swift */,
+			);
+			path = Result;
+			sourceTree = "<group>";
+		};
 		8BC611C61EE6A9BD005C5E89 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				8B9194531F0BC2750096C39E /* Result */,
+				8B91944E1F0BB6F00096C39E /* Worker */,
 				8B37AC411F0A86A000195004 /* Text Style Manager */,
 				8B37AC3E1F0A864700195004 /* Color Manager */,
 				8BC611C71EE6A9CD005C5E89 /* Storage */,
@@ -675,14 +725,19 @@
 				8B37AC331F0A5EC300195004 /* BaseViewController.swift in Sources */,
 				8BC611D51EE6B3CB005C5E89 /* UserReducer.swift in Sources */,
 				76DBBF1C1EE0F7D200186FBB /* ViewController.swift in Sources */,
+				8B91944A1F0BB6340096C39E /* AuthActions.swift in Sources */,
+				8B9194551F0BC2C10096C39E /* WEResult.swift in Sources */,
 				767147CE1EE50EDD008B92F2 /* Date.swift in Sources */,
 				8B37AC3A1F0A71CE00195004 /* AuthNode.swift in Sources */,
+				8B91944D1F0BB6D00096C39E /* FacebookAuthWorker.swift in Sources */,
 				8BC611CC1EE6AA56005C5E89 /* AppState.swift in Sources */,
 				8B37AC371F0A6EA300195004 /* AuthController.swift in Sources */,
+				8B9194501F0BB6F90096C39E /* Worker.swift in Sources */,
 				8B37AC2F1F0A5C8100195004 /* MainController.swift in Sources */,
 				8B37AC401F0A865100195004 /* ColorManager.swift in Sources */,
 				8BC611C91EE6A9E6005C5E89 /* ReactiveReSwiftBridge.swift in Sources */,
 				767147C41EE4971A008B92F2 /* Authenticated.swift in Sources */,
+				8B9194471F0BB1A00096C39E /* ASDisplayNode.swift in Sources */,
 				8BC611D11EE6AB89005C5E89 /* Storage.swift in Sources */,
 				8BC611D31EE6B30B005C5E89 /* UserState.swift in Sources */,
 				8B37AC3D1F0A725100195004 /* AuthViewModel.swift in Sources */,
@@ -690,6 +745,7 @@
 				767147CB1EE4EF90008B92F2 /* WeegoEvent.swift in Sources */,
 				8BC611CF1EE6AA8C005C5E89 /* AppReducer.swift in Sources */,
 				76DBBF1A1EE0F7D200186FBB /* AppDelegate.swift in Sources */,
+				8B9194521F0BB81F0096C39E /* Observable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

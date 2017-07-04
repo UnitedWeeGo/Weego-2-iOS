@@ -1,19 +1,23 @@
 import AsyncDisplayKit
-import FBSDKLoginKit
+import RxSwift
+import Result
 
 class AuthNode: ASDisplayNode {
+  private let disposeBag = DisposeBag()
   fileprivate let viewModel: AuthViewModelType
 
-//  lazy var facebookButton: ASDisplayNode = {
-//    return ASDisplayNode(viewBlock: { [weak self] () -> UIView in
-//      guard let weakSelf = self else { fatalError("missing self in AuthNode:facebookButton block") }
-//      let loginButton = FBSDKLoginButton()
-//      loginButton.defaultAudience = .friends
-//      loginButton.loginBehavior = .systemAccount
-//      loginButton.delegate = weakSelf
-//      return loginButton
-//    })
-//  }()
+  private var state: UserAuthStateResult = .success(.idle) {
+    didSet {
+      if oldValue == state {
+        return
+      }
+
+      if let errorMessage = state.error?.localizedDescription {
+        showToastMessage(errorMessage)
+      }
+
+    }
+  }
 
   private let facebookButton = ASButtonNode();
 
@@ -33,6 +37,16 @@ class AuthNode: ASDisplayNode {
     facebookButton.setAttributedTitle(facebookButtonTitle, for: .normal)
     facebookButton.cornerRadius = 8.0
     facebookButton.addTarget(self, action: #selector(didTapFacebookButton), forControlEvents: .touchUpInside)
+
+    viewModel.outputs.state
+      .doOnTerminate {
+        print("viewModel.outputs.state doOnTerminate")
+      }
+      .subscribe(onNext: { [weak self] (newState) in
+        guard let weakSelf = self else { return }
+        weakSelf.state = newState
+      })
+      .addDisposableTo(disposeBag)
   }
 
   override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
@@ -47,24 +61,8 @@ class AuthNode: ASDisplayNode {
 
   func didTapFacebookButton()
   {
-    print("didTapFacebookButton")
+    guard let vc = self.closestViewController else { fatalError("Missing closestViewController in AuthNode:didTapFacebookButton") }
+    viewModel.inputs.didRequestToLoginWithFacebookFromViewController(vc)
   }
 
-}
-
-extension AuthNode: FBSDKLoginButtonDelegate {
-  func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-    print("Facebook button did log out")
-  }
-
-  func loginButtonWillLogin(_ loginButton: FBSDKLoginButton!) -> Bool {
-    print("Facebook button will log in")
-    return true
-  }
-
-  func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-    print("Facebook button did complete")
-    print(result)
-    print(error)
-  }
 }
